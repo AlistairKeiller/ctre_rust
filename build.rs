@@ -8,7 +8,14 @@ fn main() -> miette::Result<()> {
      .compile("invibratrac"); // arbitrary library name, pick anything
     println!("cargo:rerun-if-changed=src/main.rs");
 
-    println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/arm64");
+    if cfg!(target_arch = "x86_64") {
+        println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/x86");
+    } else if cfg!(target_arch = "aarch64") {
+        println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/arm64");
+    } else if cfg!(target_arch = "arm") {
+        println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/arm32");
+    }
+
     println!("cargo:rustc-link-lib=CTRE_Phoenix");
     println!("cargo:rustc-link-lib=CTRE_PhoenixCCI");
     println!("cargo:rustc-link-lib=CTRE_PhoenixTools");

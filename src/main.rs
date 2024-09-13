@@ -17,7 +17,7 @@ fn main() {
     for i in 0..10000 {
         falcon.pin_mut().Set(
             ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
-            0.1,
+            0.0,
     
         );
         ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));

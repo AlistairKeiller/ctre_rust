@@ -17,10 +17,10 @@ fn main() {
     loop {
         ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
 
-        // falcon.pin_mut().Set(
-        //     ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
-        //     1.0,
-        // );
+        falcon.pin_mut().Set(
+            ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
+            1.0,
+        );
 
         std::thread::sleep(std::time::Duration::from_secs(1));
     }

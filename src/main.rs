@@ -14,7 +14,7 @@ fn main() {
     cxx::let_cxx_string!(can = "can0");
     let mut falcon =
         ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(1), &can).within_unique_ptr();
-    for _ in 0..10 {
+    for _ in 0..50 {
         // ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
 
         falcon.pin_mut().Set(

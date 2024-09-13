@@ -16,8 +16,9 @@ fn main() {
         ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(0), &can).within_unique_ptr();
     for i in 0..100 {
         falcon.pin_mut().Set(
-            ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
+            ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::MotionMagic,
             i as f64*100.0,
+            
         );
 
         ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));

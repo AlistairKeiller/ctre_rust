@@ -19,7 +19,9 @@ fn main() {
 
         falcon.pin_mut().Set(
             ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
-            0.1,
+            1.0,
         );
+
+        std::thread::sleep(std::time::Duration::from_secs(1));
     }
 }

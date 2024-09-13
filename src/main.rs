@@ -14,10 +14,10 @@ fn main() {
     cxx::let_cxx_string!(can = "can0");
     let mut falcon =
         ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(0), &can).within_unique_ptr();
-    for _ in 0..10 {
+    for i in 0..100 {
         falcon.pin_mut().Set(
-            ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
-            0.1,
+            ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
+            i as f64*100.0,
         );
 
         ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));

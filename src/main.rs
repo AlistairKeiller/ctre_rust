@@ -15,7 +15,7 @@ fn main() {
     let mut falcon =
         ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(0), &can).within_unique_ptr();
     loop {
-        ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
+        // ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
 
         falcon.pin_mut().Set(
             ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,

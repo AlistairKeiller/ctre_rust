@@ -13,7 +13,7 @@ include_cpp! {
 fn main() {
     cxx::let_cxx_string!(can = "can0");
     let mut falcon =
-        ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(0), &can).within_unique_ptr();
+        ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(1), &can).within_unique_ptr();
     loop {
         ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
 

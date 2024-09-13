@@ -15,12 +15,12 @@ fn main() {
     let mut falcon =
         ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(1), &can).within_unique_ptr();
     for _ in 0..50 {
-        // falcon.pin_mut().Set(
-        //     ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
-        //     0.5,
-        // );
+        falcon.pin_mut().Set(
+            ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
+            0.5,
+        );
 
-        ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
+        // ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
 
         std::thread::sleep(std::time::Duration::from_millis(100));
     }

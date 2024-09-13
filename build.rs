@@ -9,7 +9,7 @@ fn main() -> miette::Result<()> {
     println!("cargo:rerun-if-changed=src/main.rs");
 
     if cfg!(target_arch = "x86_64") {
-        println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/x86");
+        println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/x86-64");
     } else if cfg!(target_arch = "aarch64") {
         println!("cargo:rustc-link-search=./Phoenix5-Linux-Example/lib/arm64");
     } else if cfg!(target_arch = "arm") {

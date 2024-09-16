@@ -1,27 +1,25 @@
 use autocxx::prelude::*;
 
 include_cpp! {
-    #include "ctre/phoenix/motorcontrol/can/TalonFX.h"
-    #include "ctre/phoenix/motorcontrol/ControlMode.h"
-    #include "ctre/phoenix/unmanaged/Unmanaged.h"
+    // #include "ctre/phoenix6/unmanaged/Unmanaged.hpp"
+    // #include "ctre/phoenix6/TalonFX.hpp"
+    #include "wrapper.h"
     safety!(unsafe_ffi)
-    generate!("ctre::phoenix::motorcontrol::can::TalonFX")
-    generate!("ctre::phoenix::motorcontrol::TalonFXControlMode")
-    generate!("ctre::phoenix::unmanaged::Unmanaged")
+    // generate!("ctre::phoenix6::hardware::TalonFX")
+    // generate!("ctre::phoenix::unmanaged::FeedEnable")
+    generate!("DutyCycleOutWrapper")
 }
 
 fn main() {
-    cxx::let_cxx_string!(can = "can0");
-    let mut falcon =
-    ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(0), &can).within_unique_ptr();
-    falcon.pin_mut().Set(
-        ffi::ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput,
-        0.0,
+    // let falcon = ffi::ctre::phoenix6::hardware::TalonFX::new(c_int(0), "can0").within_unique_ptr();
 
-    );
-    for i in 0..10000 {
-        ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
+    // let x = ffi::DutyCycleOutWrapper::new(0.5);
 
-        std::thread::sleep(std::time::Duration::from_millis(100));
+    for _ in 0..10000 {
+        // ffi::ctre::phoenix::unmanaged::FeedEnable(c_int(100));
+
+        falcon.pin_mut().SetControl(falcon.as_ref());
+
+        // std::thread::sleep(std::time::Duration::from_millis(20));
     }
 }

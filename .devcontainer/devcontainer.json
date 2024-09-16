@@ -2,3 +2,4 @@
     "name": "Rust",
     "image": "mcr.microsoft.com/devcontainers/rust:latest"
 }
+// install clang, libfmt-dev, pheonix6

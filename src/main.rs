@@ -17,9 +17,9 @@ fn main() {
     let mut duty = ffi::DutyCycleOutWrapper::new(0.5).within_unique_ptr();
 
     for _ in 0..10000 {
-        ffi::ctre::phoenix::unmanaged::FeedEnable(c_int(100));
+        let _ = ffi::ctre::phoenix::unmanaged::FeedEnable(c_int(100));
 
-        falcon.pin_mut().SetControl(duty.pin_mut());
+        let _ = falcon.pin_mut().SetControl(duty.pin_mut());
 
         std::thread::sleep(std::time::Duration::from_millis(20));
     }

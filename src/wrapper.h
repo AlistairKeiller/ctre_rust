@@ -8,6 +8,10 @@ public:
     DutyCycleOutWrapper(double Output) : ctre::phoenix6::controls::DutyCycleOut(Output)
     {
     }
+
+    void WithOutput(double Output) {
+        ctre::phoenix6::controls::DutyCycleOut::WithOutput(Output);
+    }
 };
 
 class TalonFXWrapper : public ctre::phoenix6::hardware::TalonFX
@@ -17,6 +21,6 @@ public:
     {
     }
     ctre::phoenix::StatusCode SetControl(DutyCycleOutWrapper& request) {
-        return ctre::phoenix::StatusCode::OK;
+        return ctre::phoenix6::hardware::TalonFX::SetControl(request);
     }
 };

@@ -10,9 +10,9 @@ include_cpp! {
 }
 
 fn main() {
-    ffi::configure_talonfx(0);
+    ffi::configure_talonfx(c_int(0));
 
-    let position = 0.0;
+    let mut position = 0.0;
 
     loop {
         ffi::talonfx_motion_magic_voltage(c_int(0), position);

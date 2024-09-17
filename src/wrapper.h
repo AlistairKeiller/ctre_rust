@@ -24,6 +24,6 @@ public:
 
     ctre::phoenix::StatusCode SetControl(DutyCycleOutWrapper &request)
     {
-        return ctre::phoenix6::hardware::TalonFX::SetControl(request);
+        return TalonFX::SetControl(request);
     }
 };

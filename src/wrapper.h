@@ -2,20 +2,27 @@
 
 #include <ctre/phoenix6/TalonFX.hpp>
 #include <ctre/phoenix6/controls/DutyCycleOut.hpp>
+#include <ctre/phoenix6/controls/Follower.hpp>
 #include <ctre/phoenix6/unmanaged/Unmanaged.hpp>
 #include <ctre/phoenix6/controls/MotionMagicVoltage.hpp>
 
-void configure_talonfx(int device_ID)
+void configure_talonfx_follower(int device_ID, int leader_ID, bool oppose)
+{
+    ctre::phoenix6::hardware::TalonFX follower{device_ID};
+    follower.SetControl(ctre::phoenix6::controls::Follower{leader_ID, oppose});
+}
+
+void configure_talonfx(int device_ID, double p, double i, double d, double cruise_velocity, double acceleration)
 {
     ctre::phoenix6::configs::TalonFXConfiguration talonfx_config{};
     ctre::phoenix6::hardware::TalonFX talonfx{device_ID};
 
-    talonfx_config.Slot0.kP = 4.8;
-    talonfx_config.Slot0.kI = 0;
-    talonfx_config.Slot0.kD = 0.1;
+    talonfx_config.Slot0.kP = p;
+    talonfx_config.Slot0.kI = i;
+    talonfx_config.Slot0.kD = d;
 
-    talonfx_config.MotionMagic.MotionMagicCruiseVelocity = 5;
-    talonfx_config.MotionMagic.MotionMagicAcceleration = 5;
+    talonfx_config.MotionMagic.MotionMagicCruiseVelocity = cruise_velocity;
+    talonfx_config.MotionMagic.MotionMagicAcceleration = acceleration;
 
     talonfx.GetConfigurator().Apply(talonfx_config);
 }

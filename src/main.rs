@@ -6,11 +6,13 @@ include_cpp! {
     generate!("talonfx_duty_cycle_out")
     generate!("talonfx_motion_magic_voltage")
     generate!("configure_talonfx")
+    generate!("configure_talonfx_follower")
     generate!("feed_enable")
 }
 
 fn main() {
-    ffi::configure_talonfx(c_int(0));
+    ffi::configure_talonfx(c_int(0), 4.8, 0.0, 0.0, 5.0, 5.0);
+    ffi::configure_talonfx_follower(c_int(1), c_int(0), false);
 
     let mut position = 0.0;
     let mut direction = 1.0;

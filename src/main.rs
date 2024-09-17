@@ -17,7 +17,7 @@ fn main() {
 
     loop {
         ffi::talonfx_motion_magic_voltage(c_int(0), position);
-        position += direction * 0.1;
+        position += direction * 0.01;
 
         if position >= 4.0 {
             direction = -1.0;

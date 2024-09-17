@@ -8,7 +8,7 @@ void run_talonfx(int DeviceID, double Output)
 {
     ctre::phoenix6::hardware::TalonFX talonfx(DeviceID);
     ctre::phoenix6::controls::DutyCycleOut dutyCycleOut(Output);
-    talonfx.SetContxrol(dutyCycleOut);
+    talonfx.SetControl(dutyCycleOut);
 }
 
 void feed_enable() {

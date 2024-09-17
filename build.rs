@@ -7,6 +7,7 @@ fn main() -> miette::Result<()> {
     println!("cargo:rerun-if-changed=src/main.rs");
 
     println!("cargo:rustc-link-search=/usr/lib/phoenix6/");
+    println!("cargo:rustc-env=LD_LIBRARY_PATH=/usr/lib/phoenix6/");
 
     println!("cargo:rustc-link-lib=CTRE_Phoenix6");
     println!("cargo:rustc-link-lib=CTRE_PhoenixTools");

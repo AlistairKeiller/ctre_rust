@@ -3,12 +3,13 @@
 #include <ctre/phoenix6/TalonFX.hpp>
 #include <ctre/phoenix6/controls/DutyCycleOut.hpp>
 #include <ctre/phoenix6/unmanaged/Unmanaged.hpp>
+#include <iostream>
 
 void run_talonfx(int DeviceID, double Output)
 {
     ctre::phoenix6::hardware::TalonFX talonfx(DeviceID);
     ctre::phoenix6::controls::DutyCycleOut dutyCycleOut(Output);
-    talonfx.SetControl(dutyCycleOut);
+    std::cout << talonfx.SetControl(dutyCycleOut) << "\n";
 }
 
 void feed_enable() {

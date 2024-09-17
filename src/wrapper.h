@@ -14,8 +14,8 @@ void configure_talonfx(int device_ID)
     talonfx_config.Slot0.kI = 0;
     talonfx_config.Slot0.kD = 0.1;
 
-    talonfx_config.MotionMagic.MotionMagicCruiseVelocity = 1;
-    talonfx_config.MotionMagic.MotionMagicAcceleration = 1;
+    talonfx_config.MotionMagic.MotionMagicCruiseVelocity = 5;
+    talonfx_config.MotionMagic.MotionMagicAcceleration = 5;
 
     talonfx.GetConfigurator().Apply(talonfx_config);
 }

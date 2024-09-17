@@ -13,10 +13,18 @@ fn main() {
     ffi::configure_talonfx(c_int(0));
 
     let mut position = 0.0;
+    let mut direction = 1.0;
 
     loop {
         ffi::talonfx_motion_magic_voltage(c_int(0), position);
-        position += 0.1;
+        position += direction * 0.1;
+
+        if position >= 4.0 {
+            direction = -1.0;
+        } else if position <= -4.0 {
+            direction = 1.0;
+        }
+
         ffi::feed_enable();
 
         std::thread::sleep(std::time::Duration::from_millis(20));

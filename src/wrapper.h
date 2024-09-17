@@ -3,7 +3,6 @@
 #include <ctre/phoenix6/TalonFX.hpp>
 #include <ctre/phoenix6/controls/DutyCycleOut.hpp>
 #include <ctre/phoenix6/unmanaged/Unmanaged.hpp>
-#include <iostream>
 
 void run_talonfx(int DeviceID, double Output)
 {

@@ -12,7 +12,7 @@ include_cpp! {
 }
 
 fn main() {
-    let mut falcon = ffi::TalonFXWrapper::new(c_int(0)).within_unique_ptr();
+    let mut falcon = ffi::TalonFXWrapper::new(c_int(0), "can0").within_unique_ptr();
 
     let mut duty = ffi::DutyCycleOutWrapper::new(0.5).within_unique_ptr();
 

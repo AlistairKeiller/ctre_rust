@@ -1,29 +1,16 @@
 #pragma once
 
-#include <phoenix6/ctre/phoenix6/controls/DutyCycleOut.hpp>
+#include <ctre/phoenix6/TalonFX.hpp>
+#include <ctre/phoenix6/controls/DutyCycleOut.hpp>
+#include <ctre/phoenix6/unmanaged/Unmanaged.hpp>
 
-class DutyCycleOutWrapper : public ctre::phoenix6::controls::DutyCycleOut
+void run_talonfx(int DeviceID, double Output)
 {
-public:
-    DutyCycleOutWrapper(double Output) : DutyCycleOut{Output}
-    {
-    }
+    ctre::phoenix6::hardware::TalonFX talonfx(DeviceID);
+    ctre::phoenix6::controls::DutyCycleOut dutyCycleOut(Output);
+    talonfx.SetControl(dutyCycleOut);
+}
 
-    void WithOutput(double Output)
-    {
-        ctre::phoenix6::controls::DutyCycleOut::WithOutput(Output);
-    }
-};
-
-class TalonFXWrapper : public ctre::phoenix6::hardware::TalonFX
-{
-public:
-    TalonFXWrapper(int DeviceID, std::string canbus) : TalonFX{DeviceID, canbus}
-    {
-    }
-
-    ctre::phoenix::StatusCode SetControl(DutyCycleOutWrapper &request)
-    {
-        return TalonFX::SetControl(request);
-    }
-};
+void feed_enable() {
+    ctre::phoenix::unmanaged::FeedEnable(100);
+}

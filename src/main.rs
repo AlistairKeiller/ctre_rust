@@ -6,8 +6,8 @@ include_cpp! {
     #include "ctre/phoenix/unmanaged/Unmanaged.h"
     safety!(unsafe_ffi)
     generate!("ctre::phoenix::motorcontrol::can::TalonFX")
-    generate!("ctre::phoenix::motorcontrol::TalonFXControlMode")
-    generate!("ctre::phoenix::unmanaged::Unmanaged")
+    generate_pod!("ctre::phoenix::motorcontrol::TalonFXControlMode")
+    generate_pod!("ctre::phoenix::unmanaged::Unmanaged")
 }
 
 fn main() {
@@ -15,6 +15,14 @@ fn main() {
     let mut falcon =
     ffi::ctre::phoenix::motorcontrol::can::TalonFX::new(c_int(0), &can).within_unique_ptr();
     
+    // Config in tuner:
+    // Motor Output.Neutral Deadband: 0
+    // Motion Magic.Acceleration: 1000
+    // Motion Magic.Cruise Velocity: 1000
+    // Slot 0.kP: 0.6
+    // Slot 0.kI: 0.001
+    // Slot 0.kD: 6
+
     for i in 0..10000 {
         ffi::ctre::phoenix::unmanaged::Unmanaged::FeedEnable(c_int(100));
         

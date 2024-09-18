@@ -1,5 +1,5 @@
 {
     "name": "Rust",
     "image": "mcr.microsoft.com/devcontainers/rust:latest",
-    "postCreateCommand": "sudo curl -s --compressed -o /usr/share/keyrings/ctr-pubkey.gpg \"https://deb.ctr-electronics.com/ctr-pubkey.gpg\" && sudo curl -s --compressed -o /etc/apt/sources.list.d/ctr${YEAR}.list \"https://deb.ctr-electronics.com/ctr2024.list\" && sudo apt update && sudo apt install -y clang libfmt-dev phoenix6"
+    "postCreateCommand": "sudo curl -s --compressed -o /usr/share/keyrings/ctr-pubkey.gpg \"https://deb.ctr-electronics.com/ctr-pubkey.gpg\" && sudo curl -s --compressed -o /etc/apt/sources.list.d/ctr2024.list \"https://deb.ctr-electronics.com/ctr2024.list\" && sudo apt update && sudo apt install -y clang libfmt-dev phoenix6"
 }
